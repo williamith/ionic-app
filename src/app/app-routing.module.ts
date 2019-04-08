@@ -4,16 +4,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'dashboard',
     pathMatch: 'full'
   },
   {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    path: 'dashboard',
+    loadChildren: './dashboard/dashboard.module#DashboardPageModule'
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'patients',
+    loadChildren: './patients/patients.module#PatientsPageModule'
+  },
+  {
+    path: 'labs',
+    loadChildren: './labs/labs.module#LabsPageModule'
+  },
+  {
+    path: 'pharmacists',
+    loadChildren: './pharmacists/pharmacists.module#PharmacistsPageModule'
   }
 ];
 

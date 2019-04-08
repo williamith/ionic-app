@@ -6,19 +6,30 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public appPages = [
+  public pages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      title: 'Dashboard',
+      url: '/dashboard',
+      icon: 'analytics'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Patients',
+      url: '/patients',
+      icon: 'people'
+    },
+    {
+      title: 'Labs',
+      url: '/labs',
+      icon: 'flask'
+    },
+    {
+      title: 'Pharmacists',
+      url: '/pharmacists',
+      icon: 'medkit'
     }
   ];
 
