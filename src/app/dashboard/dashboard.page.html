@@ -5,5 +5,38 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card (click)="viewPatientsPage()">
+          <ion-card-header>
+            <img src="../../assets/image/patients.jpg">
+            <ion-card-title>Patients</ion-card-title>
+            <ion-card-subtitle color="primary">Manage patients here</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ul>
+              <li>Create new patients</li>
+              <li>Manage existing an patient's information and labs</li>
+            </ul>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card (click)="viewLabsPage()">
+          <ion-card-header>
+            <img src="../../assets/image/labs.jpg">
+            <ion-card-title>Labs</ion-card-title>
+            <ion-card-subtitle color="primary" >Manage labs here</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ul>
+              <li>Create new lab types</li>
+              <li>Edit existing lab types</li>
+            </ul>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
