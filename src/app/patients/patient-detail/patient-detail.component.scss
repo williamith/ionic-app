@@ -1,0 +1,12 @@
+ion-item, ion-label, ion-note {
+    white-space: normal !important;
+}
+
+ion-label, ion-item, ion-col {
+    cursor: default !important;
+}
+
+.underline {
+    border-bottom: 1px solid #989aa2;
+    cursor: pointer;
+}

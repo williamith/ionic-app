@@ -9,7 +9,7 @@
         </ion-title>
       </ion-toolbar>
       <ion-content color="dark">
-        <ion-list>
+        <ion-list lines="none">
           <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
             <ion-item color="dark" [routerDirection]="'root'" [routerLink]="[page.url]">
               <ion-icon slot="start" [name]="page.icon"></ion-icon>
