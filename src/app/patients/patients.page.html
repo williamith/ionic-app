@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Patients</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button>
+        </ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="viewCreatePatientPage()">
+          <ion-icon slot="icon-only" name="add"></ion-icon>
+        </ion-button>
+      </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-item detail="true" *ngFor="let patient of patients" (click)="viewPatientDetailsPage(patient)">
+      <ion-grid>
+        <ion-row>
+          <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-note color="medium">{{patient.patientId}}</ion-note>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>
