@@ -9,14 +9,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./patients.page.scss'],
 })
 export class PatientsPage implements OnInit {
-  patients = [];
+  patients: any;
+  isError: any;
   
   constructor(private patientsService: PatientsService, private router: Router) { }
 
   ngOnInit() {
     this.patientsService.readPatients().subscribe(
       response => this.patients = response,
-      error => console.log(error),
+      error => {
+        console.log(error);
+        this.isError = true;
+      },
       () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
       );
   }

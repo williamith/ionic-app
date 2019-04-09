@@ -2,19 +2,176 @@
   <ion-toolbar>
     <ion-title>Patients</ion-title>
     <ion-buttons slot="start">
-        <ion-back-button>
-        </ion-back-button>
-      </ion-buttons>
-      <ion-buttons slot="end">
-        <ion-button (click)="viewCreatePatientPage()">
-          <ion-icon slot="icon-only" name="add"></ion-icon>
-        </ion-button>
-      </ion-buttons>
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="viewCreatePatientPage()">
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="!isError && !patients">
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+    <ion-item>
+      <ion-grid>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+        <ion-row>
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-item *ngIf="isError">
+    <ion-label color="danger">There was an error connecting.</ion-label>
+  </ion-item>
+
+  <ion-list *ngIf="patients">
     <ion-item detail="true" *ngFor="let patient of patients" (click)="viewPatientDetailsPage(patient)">
       <ion-grid>
         <ion-row>
