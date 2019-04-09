@@ -1,6 +1,6 @@
 .split-pane-visible >.split-pane-side {
-    min-width: 200px!important;
-    max-width: 200px!important;
+    min-width: 70px!important;
+    max-width: 70px!important;
 }
 
 ion-list {
@@ -14,4 +14,24 @@ ion-menu {
 ion-toolbar {
     --background: #222428;
     --color: #ffffff;
+}
+
+.centervert {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+ion-button {
+    height: 4em;
+}
+
+ion-icon {
+    font-size: 2em;
+}
+
+ion-footer {
+    background-color: #222428;
+    border-top: 1px solid #989aa2;
 }
