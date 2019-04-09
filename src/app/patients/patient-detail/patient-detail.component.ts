@@ -21,11 +21,11 @@ export class PatientDetailComponent implements OnInit {
   ngOnInit() {
     this.patient = this.patientsService.patient;
 
-    this.labsService.readLabs(this.patientsService.patient.patientId).subscribe(
-      response => this.labs = response,
-      error => console.log(error),
-      () => this.labs.sort(((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)))
-    );
+    // this.labsService.readLabs(this.patientsService.patient.patientId).subscribe(
+    //   response => this.labs = response,
+    //   error => console.log(error),
+    //   () => this.labs.sort(((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)))
+    // );
 
     this.labTypesService.readLabTypes().subscribe(
       response => this.labTypes = response,
@@ -33,13 +33,20 @@ export class PatientDetailComponent implements OnInit {
     );
   }
 
-  viewLabHistory(labType: string) {
-    this.filteredLabs = this.labs.filter(labValue => {
-      return labValue.labType === labType;
-    });
-    
-    console.log(Object.values(this.filteredLabs));
+  viewLabHistoryPage(labType: any) {
+    this.labsService.labType = this.getLabType(labType);
 
     this.router.navigate(['patients', 'patient-detail', 'lab-history'])
+  }
+
+  getLabType(input: any): string {
+    let result = Object.values(input);
+    console.log(result);
+    let labType = result[1];
+
+    console.log(labType);
+    this.labsService.labType = labType.toString();
+    console.log(this.labsService.labType);
+    return this.labsService.labType;
   }
 }

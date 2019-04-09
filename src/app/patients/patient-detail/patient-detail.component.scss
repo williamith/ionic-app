@@ -10,3 +10,8 @@ ion-label, ion-item, ion-col {
     border-bottom: 1px solid #989aa2;
     cursor: pointer;
 }
+
+ion-input{
+    --placeholder-color: #989aa2;
+    --placeholder-opacity: 1;
+}

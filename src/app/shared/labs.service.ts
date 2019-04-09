@@ -10,6 +10,7 @@ import { map } from 'rxjs/operators';
 export class LabsService {
   url: string = 'https://localhost:44394/api/labscollection';
   lab: Lab;
+  labType: string;
 
   constructor(private http: HttpClient) { }
 
