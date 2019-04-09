@@ -7,13 +7,13 @@ import { Lab } from './lab';
   providedIn: 'root'
 })
 export class LabsService {
-  url: string = 'https://localhost:44311/api/labscollection';
+  url: string = 'https://localhost:44394/api/labscollection';
   lab: Lab;
 
   constructor(private http: HttpClient) { }
 
   createLab(lab: Lab) {
-    this.http.post<Lab>(this.url, lab);
+    // this.http.post<Lab>(this.url, lab);
   }
 
   readLabs(patientId: string): Observable<Lab[]>  {
@@ -21,10 +21,10 @@ export class LabsService {
   }
 
   updateLab(lab: Lab) {
-    return this.http.put<Lab>(this.url, lab);
+    // return this.http.put<Lab>(this.url, lab);
   }
 
   deleteLab(lab: Lab) {
-    return this.http.put<Lab>(this.url, lab);
+    // return this.http.put<Lab>(this.url, lab);
   }
 }

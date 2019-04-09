@@ -6,3 +6,12 @@
 ion-list {
     padding: 0;
 }
+
+ion-menu {
+    border: 0 !important;
+}
+
+ion-toolbar {
+    --background: #222428;
+    --color: #ffffff;
+}

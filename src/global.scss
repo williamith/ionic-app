@@ -13,3 +13,7 @@
 .pr-1 { padding-right: 1em; }
 .pr-2 { padding-right: 2em; }
 .pr-3 { padding-right: 3em; }
+
+ion-button, ion-back-button {
+    --color: #3880ff !important;
+}
