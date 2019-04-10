@@ -12,41 +12,70 @@ import { Router } from '@angular/router';
 })
 export class PatientDetailComponent implements OnInit {
   patient: Patient;
-  labs = [];
   labTypes = [];
-  filteredLabs = [];
+
+  labs = [];
+  labTypesHasLength = [];
 
   constructor(private patientsService: PatientsService, private labsService: LabsService, private labTypesService: LabTypesService, private router: Router) { }
 
   ngOnInit() {
+    // Sets current patient for interpolation
     this.patient = this.patientsService.patient;
 
-    // this.labsService.readLabs(this.patientsService.patient.patientId).subscribe(
-    //   response => this.labs = response,
-    //   error => console.log(error),
-    //   () => this.labs.sort(((a, b) => (a.date > b.date) ? 1 : ((b.date > a.date) ? -1 : 0)))
-    // );
-
+    // Sets labTypes for interpolation
     this.labTypesService.readLabTypes().subscribe(
       response => this.labTypes = response,
       error => console.log(error)
     );
+
+    this.createLabTypesHasLengthArray();
+
+    this.labsService.readLabs().subscribe(
+      response => {
+        this.labs = response.filter(item => {
+          return item.labType.includes(this.labsService.labType);
+        });
+      },
+      error => console.log(error),
+      () => this.labs.sort(function(obj1, obj2) { return obj1.date - obj2.date; })
+    );
+  }
+
+  createLabTypesHasLengthArray() {
+    for (let index = 0; index < this.labTypes.length; index++) {
+      console.log('Hello');
+    }
+
+    this.labTypes.forEach(element => {
+      
+    });
   }
 
   viewLabHistoryPage(labType: any) {
     this.labsService.labType = this.getLabType(labType);
-
     this.router.navigate(['patients', 'patient-detail', 'lab-history'])
   }
 
   getLabType(input: any): string {
     let result = Object.values(input);
-    console.log(result);
     let labType = result[1];
-
-    console.log(labType);
-    this.labsService.labType = labType.toString();
-    console.log(this.labsService.labType);
-    return this.labsService.labType;
+    return labType.toString();
   }
+
+  // Needs testing
+  // getRecentLab() {
+  //   this.labsService.readLabs(this.patientsService.patient.patientId).subscribe(
+  //     response => {
+  //       this.recentLab = response.filter(item => {
+  //         return item.labType.includes(this.labsService.labType);
+  //       });
+
+  //       this.recentLab = this.recentLab[0];
+  //       console.log(this.recentLab);
+  //     },
+  //     error => console.log(error),
+  //     () => this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)))
+  //   );
+  // }
 }
