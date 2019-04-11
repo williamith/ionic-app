@@ -17,6 +17,7 @@ export class LabsService {
 
   createLab(lab: Lab) {
     // this.http.post<Lab>(this.url, lab);
+    console.log(lab);
   }
 
   readLabs(): Observable<Lab[]>  {

@@ -5,9 +5,6 @@
       <ion-back-button>
       </ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button (click)="viewMemberEditPage()">Edit</ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -16,33 +13,35 @@
     <ion-title>Record labs here and view patient history.</ion-title>
   </ion-item>
   <ion-list>
-    <ion-item button="true" *ngFor="let labType of labTypes">
+    <ion-item button="true" *ngFor="let labType of labTypes; let i = index">
       <ion-grid>
         <ion-row>
-          <ion-col>
+          <ion-col size="12" size-sm>
             <ion-label>{{labType.labType}}:</ion-label>
-            <!-- <ion-note color="primary">Last recorded {{labType.labType}} of on recentLab.date | date: 'MM/dd/yyyy'</ion-note> -->
+            <ion-note color="primary">Last recorded value: <ion-note color="danger">xxxxx</ion-note> on recentLab.date |
+              date: 'MM/dd/yyyy'</ion-note> -->
           </ion-col>
-          <ion-col>
-            <ion-input type="number" required="true" clearInput="true" inputMode="numeric"  placeholder="Enter Value"
-              color="primary"></ion-input>
+          <ion-col size="12" size-sm>
+            <ion-item>
+              <ion-input position="floating" type="number" required="true" clearInput="true" inputMode="numeric" placeholder="Enter Value"
+                color="primary"></ion-input>
+            </ion-item>
           </ion-col>
-          <ion-col size="2">
-            <ion-button color="light">
+          <ion-col size="12" size-sm>
+            <ion-button color="light" (click)="createLab(labType)">
               <ion-label>
                 <ion-icon name="ios-add-circle"></ion-icon>&nbsp;Record Value
               </ion-label>
             </ion-button>
           </ion-col>
-          <ion-col size="1">
-            <ion-note>
-              <ion-icon name="ios-calendar"></ion-icon>Today
-            </ion-note>
+          <ion-col size="12" size-sm>
+            <ion-text>
+              <ion-icon name="ios-calendar"></ion-icon>&nbsp;Today
+            </ion-text>
           </ion-col>
-          <ion-col size="2">
-            <ion-button color="medium" fill="clear" (click)="viewLabHistoryPage(labType)">
-              <ion-icon name="ios-filing"></ion-icon>
-              <ion-text class="underline">&nbsp;View History</ion-text>
+          <ion-col size="12" size-sm>
+            <ion-button color="light" (click)="viewLabHistoryPage(labType)">
+              <ion-icon name="ios-filing"></ion-icon>&nbsp;View History
             </ion-button>
           </ion-col>
         </ion-row>

@@ -181,8 +181,7 @@
       <ion-title>Click on a patient to view their profile.</ion-title>
     </ion-item>
     <ion-list>
-
-      <ion-item detail="true" *ngFor="let patient of patients" (click)="viewPatientDetailsPage(patient)">
+      <ion-item detail="true" *ngFor="let patient of patients$ | async" (click)="viewPatientDetailsPage(patient)">
         <ion-grid>
           <ion-row>
             <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>

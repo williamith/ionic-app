@@ -1,4 +1,3 @@
-import { LabTypesService } from './../../shared/labTypes.service';
 import { PatientsService } from './../../shared/patients.service';
 import { Component, OnInit } from '@angular/core';
 import { LabsService } from 'src/app/shared/labs.service';

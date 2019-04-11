@@ -8,10 +8,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { PatientsPage } from './patients.page';
+import { PatientCreateComponent } from './patient-create/patient-create.component';
 
 const routes: Routes = [
   {
     path: 'patient-detail/lab-history',
+    component: PatientLabHistoryComponent
+  },
+  {
+    path: 'new',
     component: PatientLabHistoryComponent
   },
   {
@@ -34,7 +39,8 @@ const routes: Routes = [
   declarations: [
     PatientsPage,
     PatientDetailComponent,
-    PatientLabHistoryComponent
+    PatientLabHistoryComponent,
+    PatientCreateComponent
   ]
 })
 export class PatientsPageModule {}

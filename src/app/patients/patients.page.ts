@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from '../shared/patient';
 import { PatientsService } from '../shared/patients.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-patients',
@@ -9,17 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./patients.page.scss'],
 })
 export class PatientsPage implements OnInit {
-  patients: any;
+  patients$: Observable<Patient[]>;
   isError: any;
   
   constructor(private patientsService: PatientsService, private router: Router) { }
 
   ngOnInit() {
-    this.patientsService.readPatients().subscribe(
-      response => this.patients = response,
-      error => { console.log(error); this.isError = true;},
-      () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
-    );
+    this.patients$ = this.patientsService.readPatients();
+    //   .subscribe(
+    //   response => this.patients = response,
+    //   error => { console.log(error); this.isError = true;},
+    //   () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
+    // );
   }
 
   viewCreatePatientPage() {

@@ -4,6 +4,7 @@ import { Patient } from '../../shared/patient';
 import { PatientsService } from '../../shared/patients.service';
 import { LabsService } from './../../shared/labs.service';
 import { Router } from '@angular/router';
+import { Lab } from 'src/app/shared/lab';
 
 @Component({
   selector: 'app-patient-detail',
@@ -15,7 +16,7 @@ export class PatientDetailComponent implements OnInit {
   labTypes = [];
 
   labs = [];
-  labTypesHasLength = [];
+  labInputValues = [];
 
   constructor(private patientsService: PatientsService, private labsService: LabsService, private labTypesService: LabTypesService, private router: Router) { }
 
@@ -38,8 +39,16 @@ export class PatientDetailComponent implements OnInit {
         });
       },
       error => console.log(error),
-      () => this.labs.sort(function(obj1, obj2) { return obj1.date - obj2.date; })
+      () => this.labs.sort(function (obj1, obj2) { return obj1.date - obj2.date; })
     );
+  }
+
+  createLab(lab: Lab) {
+    this.labsService.createLab(lab);
+    // for (let i = 0; i < this.labTypes.length; i++) {
+    //   this.labInputValues.push(0);
+    //   console.log(`labInputArray.length = ${this.labInputValues.length}`)
+    // }
   }
 
   createLabTypesHasLengthArray() {
@@ -48,7 +57,7 @@ export class PatientDetailComponent implements OnInit {
     }
 
     this.labTypes.forEach(element => {
-      
+
     });
   }
 

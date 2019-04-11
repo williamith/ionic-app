@@ -1,3 +1,32 @@
-<p>
-  patient-create works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>New Patient</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="createPatient()">Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item color="medium">
+    <ion-text>
+      <ion-title color="light">Name</ion-title>
+    </ion-text>
+  </ion-item>
+  <ion-item color="light">
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="patient.firstname" placeholder="First" clearInput></ion-input>
+      <ion-input type="text" [(ngModel)]="patient.lastName" placeholder="Last" clearInput></ion-input>
+    </ion-item>
+    <ion-text>
+      <ion-title color="light">Patient Details</ion-title>
+    </ion-text>
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="patient.patientId" placeholder="Title" clearInput></ion-input>
+    </ion-item>
+  </ion-item>
+</ion-content>
