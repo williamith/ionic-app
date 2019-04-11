@@ -1,8 +1,8 @@
 export interface Lab {
-    id: string;
+    id?: string;
     patientId: string;
     labType: string;
-    labValue: any;
-    date: any;
+    labValue: number;
+    date: string;
     isHidden: boolean;
 }

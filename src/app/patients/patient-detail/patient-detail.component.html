@@ -20,11 +20,11 @@
             <ion-label>{{labType.labType}}:</ion-label>
           </ion-col>
           <ion-col size="12" size-sm>
-            <ion-input type="number" required="true" clearInput="true" inputMode="numeric" placeholder="Enter Value"
-              color="primary" no-padding></ion-input>
+            <ion-input [(ngModel)]="values[i]" type="number" required="true" clearInput="true" inputMode="numeric" placeholder="Enter Value"
+              color="primary"></ion-input>
           </ion-col>
           <ion-col size="12" size-sm>
-            <ion-button color="light" (click)="createLab(labType)">
+            <ion-button color="light" (click)="createLab(labType, i)">
               <ion-label>
                 <ion-icon name="ios-add-circle"></ion-icon>&nbsp;Record Value
               </ion-label>
@@ -50,8 +50,9 @@
       </ion-grid>
     </ion-item>
   </ion-list>
+</ion-content>
 
-  <!-- <ion-list>
+<!-- <ion-list>
     <ion-item *ngFor="let lab of labs">
       <ion-grid>
         <ion-row>
@@ -66,4 +67,3 @@
       </ion-grid>
     </ion-item>
   </ion-list> -->
-</ion-content>

@@ -17,11 +17,6 @@ export class PatientsPage implements OnInit {
 
   ngOnInit() {
     this.patients$ = this.patientsService.readPatients();
-    //   .subscribe(
-    //   response => this.patients = response,
-    //   error => { console.log(error); this.isError = true;},
-    //   () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
-    // );
   }
 
   viewCreatePatientPage() {
@@ -33,3 +28,9 @@ export class PatientsPage implements OnInit {
   this.router.navigate(['patients', 'patient-detail']);
   }
 }
+
+//   .subscribe(
+    //   response => this.patients = response,
+    //   error => { console.log(error); this.isError = true;},
+    //   () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
+    // );
