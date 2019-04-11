@@ -13,13 +13,22 @@
     <ion-title>{{labType}} Values</ion-title>
   </ion-item>
   <ion-list>
-    <ion-item *ngFor="let lab of labs">
+    <ion-item *ngFor="let lab of labs" (click)="testViewLabs()">
       <ion-grid>
         <ion-row>
-          <ion-label>{{lab.date | date: 'MM/dd/yyyy'}} {{lab.date | date: 'hh:mmaa'}}</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-note color="medium">{{lab.labValue}}</ion-note>
+          <ion-col size="11">
+            <ion-row>
+              <ion-label>{{lab.date | date: 'MM/dd/yyyy'}} {{lab.date | date: 'hh:mmaa'}}</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-note color="medium">{{lab.labValue}}</ion-note>
+            </ion-row>
+          </ion-col>
+          <ion-col size="1">
+            <ion-button color="medium" fill="clear" (click)="viewPatientLabEditPage(lab)">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>

@@ -18,15 +18,16 @@ export class LabsService {
     return this.http.post<Lab>(this.url, lab).toPromise();
   }
 
-  readLabs(): Observable<Lab[]>  {
+  readLabs(): Observable<Lab[]> {
     return this.http.get<Lab[]>(`${this.url}/${this.patientsService.patient.patientId}`);
   }
 
-  updateLab(lab: Lab) {
-    // return this.http.put<Lab>(this.url, lab);
+  // Fix API issue 405 error
+  updateLab(lab: Lab): Promise<Lab> {
+    return this.http.put<Lab>(`${this.url}/${lab.id}`, lab).toPromise();
   }
 
   deleteLab(lab: Lab) {
-    // return this.http.put<Lab>(this.url, lab);
+    // return this.http.put<Lab>(`this.url/${lab.id}`, lab).toPromise;
   }
 }
