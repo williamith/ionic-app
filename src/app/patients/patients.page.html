@@ -19,6 +19,24 @@
 </ion-header>
 
 <ion-content>
+  <ion-item color="light">
+    <ion-title>Click on a patient to view their profile.</ion-title>
+  </ion-item>
+  <ion-list>
+    <ion-item detail="true" *ngFor="let patient of patients$ | async" (click)="viewPatientDetailsPage(patient)">
+      <ion-grid>
+        <ion-row>
+          <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>
+        </ion-row>
+        <ion-row>
+          <ion-note color="medium">{{patient.patientId}}</ion-note>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!-- <ion-content>
   <ion-list *ngIf="!isError && !patients">
     <ion-item>
       <ion-grid>
@@ -170,27 +188,8 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 
-  <ion-item *ngIf="isError">
+<!-- <ion-item *ngIf="isError">
     <ion-label color="danger">There was an error connecting.</ion-label>
-  </ion-item>
-
-  <ion-content *ngIf="patients">
-    <ion-item color="light">
-      <ion-title>Click on a patient to view their profile.</ion-title>
-    </ion-item>
-    <ion-list>
-      <ion-item detail="true" *ngFor="let patient of patients$ | async" (click)="viewPatientDetailsPage(patient)">
-        <ion-grid>
-          <ion-row>
-            <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>
-          </ion-row>
-          <ion-row>
-            <ion-note color="medium">{{patient.patientId}}</ion-note>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-    </ion-list>
-  </ion-content>
-</ion-content>
+  </ion-item> -->

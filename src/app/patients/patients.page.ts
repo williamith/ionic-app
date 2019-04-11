@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from '../shared/patient';
-import { PatientsService } from '../shared/patients.service';
+import { Patient } from './shared/patient';
+import { PatientsService } from './shared/patients.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class PatientsPage implements OnInit {
   patients$: Observable<Patient[]>;
-  isError: any;
+  // isError: any;
   
   constructor(private patientsService: PatientsService, private router: Router) { }
 

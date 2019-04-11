@@ -1,6 +1,6 @@
-import { PatientsService } from './../../shared/patients.service';
+import { PatientsService } from '../shared/patients.service';
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/shared/patient';
+import { Patient } from 'src/app/patients/shared/patient';
 
 @Component({
   selector: 'app-patient-create',
@@ -20,14 +20,14 @@ export class PatientCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  // createPatient() {
-  //   this.patientsService.createPatient(this.patient)
-  //     .then(memberRef => {
-  //       console.log(`Member with id of ${memberRef.id} is added`);
-  //       this.router.navigate(['app/members/directory']);
-  //       this.presentToastMemberCreated();
-  //     });
-  // }
+  createPatient() {
+    // this.patientsService.createPatient(this.patient)
+    //   .then(memberRef => {
+    //     console.log(`Member with id of ${memberRef.id} is added`);
+    //     this.router.navigate(['app/members/directory']);
+    //     this.presentToastMemberCreated();
+    //   });
+  }
 
   // async presentToastMemberCreated() {
   //   const toast = await this.toastController.create({

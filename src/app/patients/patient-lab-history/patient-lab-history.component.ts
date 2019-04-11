@@ -1,6 +1,6 @@
-import { PatientsService } from './../../shared/patients.service';
+import { PatientsService } from '../shared/patients.service';
 import { Component, OnInit } from '@angular/core';
-import { LabsService } from 'src/app/shared/labs.service';
+import { LabsService } from 'src/app/patients/shared/labs.service';
 
 @Component({
   selector: 'app-patient-lab-history',
