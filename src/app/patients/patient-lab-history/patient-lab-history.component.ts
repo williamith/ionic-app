@@ -23,8 +23,8 @@ export class PatientLabHistoryComponent implements OnInit {
     this.labsService.readLabs().subscribe(
       response => { this.labs = response.filter(item => { return item.labType.includes(this.labsService.labType); }); },
       error => console.log(error),
-      () => {
-        this.labs = this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)));
+      () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Sorts and filters labs array.
+        this.labs = this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0))); 
         this.labs = this.labs.filter(function(lab) { return lab.isHidden == false });
       }
     );
