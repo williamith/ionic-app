@@ -42,7 +42,10 @@ export class PatientDetailComponent implements OnInit {
 
     this.labTypesService.readLabTypes().subscribe( // Sets lab types and handle any response or error
       response => this.labTypes = response,
-      error => console.log(error)
+      error => console.log(error),
+      () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Sorts labs array by isMandatory value.
+        this.labTypes = this.labTypes.sort(((a, b) => (a.isMandatory < b.isMandatory) ? 1 : ((b.isMandatory < a.isMandatory) ? -1 : 0)));
+      }
     );
   }
 
