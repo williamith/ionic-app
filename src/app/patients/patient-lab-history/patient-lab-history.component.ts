@@ -3,8 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { LabsService } from 'src/app/patients/shared/labs.service';
 import { Router } from '@angular/router';
 import { Lab } from '../shared/lab';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-patient-lab-history',
@@ -22,7 +20,6 @@ export class PatientLabHistoryComponent implements OnInit {
     this.patient = this.patientsService.patient;
     this.labType = this.labsService.labType;
 
-    // Most Recent Working
     this.labsService.readLabs().subscribe(
       response => { this.labs = response.filter(item => { return item.labType.includes(this.labsService.labType); }); },
       error => console.log(error),
@@ -33,9 +30,5 @@ export class PatientLabHistoryComponent implements OnInit {
   viewPatientLabEditPage(lab: Lab) {
     this.labsService.lab = lab;
     this.router.navigate(['patients', 'patient-detail', 'lab-history', 'lab-edit']);
-  }
-
-  testViewLabs() {
-    console.log(this.labs);
   }
 }

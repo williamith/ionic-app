@@ -27,3 +27,6 @@
     <ion-input type="text" [(ngModel)]="newLabValues.labValue" type="number" required="true" clearInput="true" inputMode="numeric" placeholder="Enter new value"></ion-input>
   </ion-item>
 </ion-content>
+<ion-footer>
+  <ion-button expand="full" color="danger" (click)="deleteLab()"><ion-icon name="trash"></ion-icon>&nbsp;Delete</ion-button>
+</ion-footer>
