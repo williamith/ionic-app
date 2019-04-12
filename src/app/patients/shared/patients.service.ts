@@ -12,19 +12,19 @@ export class PatientsService {
 
   constructor(private http: HttpClient) { }
 
-  createPatient(patient: Patient) {
-    this.http.post<Patient>(this.url, patient);
+  createPatient(patient: Patient): Promise<Patient> {
+    return this.http.post<Patient>(this.url, patient).toPromise();
   }
 
   readPatients(): Observable<Patient[]> {
     return this.http.get<Patient[]>(this.url);
   }
 
-  updatePatient(patient: Patient) {
-    return this.http.put<Patient>(this.url, patient);
+  updatePatient(patient: Patient): Promise<Patient> {
+    return this.http.put<Patient>(`${this.url}/${patient.id}`, patient).toPromise();
   }
 
-  deletePatient(patient: Patient) {
-    return this.http.put<Patient>(this.url, patient);
+  deletePatient(id: string): Promise<Patient> {
+    return this.http.delete<Patient>(`${this.url}/${id}`).toPromise()
   }
 }

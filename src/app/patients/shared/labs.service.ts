@@ -12,7 +12,7 @@ export class LabsService {
   lab: Lab;
   labType: string;
 
-  labs = [];
+  // labs = [];
 
   constructor(private http: HttpClient, private patientsService: PatientsService) { }
 
@@ -32,11 +32,11 @@ export class LabsService {
     return this.http.delete<Lab>(`${this.url}/${id}`).toPromise();
   }
 
-  refreshLabs() {
-    this.readLabs().subscribe(
-      response => { this.labs = response.filter(item => { return item.labType.includes(this.labType); }); },
-      error => console.log(error),
-      () => this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)))
-    );
-  }
+  // refreshLabs() {
+  //   this.readLabs().subscribe(
+  //     response => { this.labs = response.filter(item => { return item.labType.includes(this.labType); }); },
+  //     error => console.log(error),
+  //     () => this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)))
+  //   );
+  // }
 }

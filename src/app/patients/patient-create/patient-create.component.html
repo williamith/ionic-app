@@ -13,20 +13,22 @@
 
 <ion-content>
   <ion-item color="medium">
-    <ion-text>
-      <ion-title color="light">Name</ion-title>
-    </ion-text>
+    <ion-title>Enter new patient information here.</ion-title>
   </ion-item>
   <ion-item color="light">
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="patient.firstname" placeholder="First" clearInput></ion-input>
-      <ion-input type="text" [(ngModel)]="patient.lastName" placeholder="Last" clearInput></ion-input>
-    </ion-item>
-    <ion-text>
-      <ion-title color="light">Patient Details</ion-title>
-    </ion-text>
-    <ion-item>
-      <ion-input type="text" [(ngModel)]="patient.patientId" placeholder="Title" clearInput></ion-input>
-    </ion-item>
+    <ion-title>Patient Details</ion-title>
   </ion-item>
+  <ion-grid>
+    <ion-row size="12" size-sm>
+      <ion-item>
+        <ion-input required="true" autocapitalize="true" type="text" [(ngModel)]="patient.firstName" placeholder="First" clearInput></ion-input>
+        <ion-input required="true" autocapitalize="true" type="text" [(ngModel)]="patient.lastName" placeholder="Last" clearInput></ion-input>
+      </ion-item>
+    </ion-row>
+    <ion-row size="12" size-sm>
+      <ion-item>
+        <ion-input required="true" type="text" [(ngModel)]="patient.patientId" placeholder="Patient ID" clearInput></ion-input>
+      </ion-item>
+    </ion-row>
+  </ion-grid>
 </ion-content>

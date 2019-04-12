@@ -23,13 +23,22 @@
     <ion-title>Click on a patient to view their profile.</ion-title>
   </ion-item>
   <ion-list>
-    <ion-item detail="true" *ngFor="let patient of patients$ | async" (click)="viewPatientDetailsPage(patient)">
+    <ion-item *ngFor="let patient of patients">
       <ion-grid>
         <ion-row>
-          <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-note color="medium">{{patient.patientId}}</ion-note>
+          <ion-col size="11" (click)="viewPatientDetailsPage(patient)">
+            <ion-row>
+              <ion-label>{{patient.lastName}}, {{patient.firstName}}</ion-label>
+            </ion-row>
+            <ion-row>
+              <ion-note color="medium">{{patient.patientId}}</ion-note>
+            </ion-row>
+          </ion-col>
+          <ion-col size="1">
+            <ion-button color="medium" fill="clear" (click)="viewPatientEditPage(patient)">
+              <ion-icon name="create"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>

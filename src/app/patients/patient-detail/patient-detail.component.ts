@@ -78,7 +78,7 @@ export class PatientDetailComponent implements OnInit {
       showCloseButton: true,
       position: 'bottom',
       closeButtonText: 'Close',
-      color: 'dark',
+      color: 'success',
       duration: 3000
     });
     toast.present();

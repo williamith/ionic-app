@@ -1,3 +1,4 @@
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
 import { PatientLabEditComponent } from './patient-lab-edit/patient-lab-edit.component';
 import { PatientLabHistoryComponent } from './patient-lab-history/patient-lab-history.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
@@ -13,6 +14,10 @@ import { PatientCreateComponent } from './patient-create/patient-create.componen
 
 const routes: Routes = [
   {
+    path: 'patient-edit',
+    component: PatientEditComponent
+  },
+  {
     path: 'patient-detail/lab-history/lab-edit',
     component: PatientLabEditComponent
   },
@@ -22,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'new',
-    component: PatientLabHistoryComponent
+    component: PatientCreateComponent
   },
   {
     path: 'patient-detail',
@@ -46,7 +51,8 @@ const routes: Routes = [
     PatientDetailComponent,
     PatientLabHistoryComponent,
     PatientCreateComponent,
-    PatientLabEditComponent
+    PatientLabEditComponent,
+    PatientEditComponent
   ]
 })
 export class PatientsPageModule {}

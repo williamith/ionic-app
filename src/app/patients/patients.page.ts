@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from './shared/patient';
 import { PatientsService } from './shared/patients.service';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-patients',
@@ -10,13 +9,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./patients.page.scss'],
 })
 export class PatientsPage implements OnInit {
-  patients$: Observable<Patient[]>;
-  // isError: any;
-  
+  patients = [];
+
   constructor(private patientsService: PatientsService, private router: Router) { }
 
   ngOnInit() {
-    this.patients$ = this.patientsService.readPatients();
+    this.patientsService.readPatients().subscribe(
+      response => { this.patients = response; },
+      error => console.log(error),
+      () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Filters patients array by isActive value.
+        this.patients = this.patients.filter(function (patient) { return patient.isActive === true });
+      }
+    );
   }
 
   viewCreatePatientPage() {
@@ -24,13 +28,12 @@ export class PatientsPage implements OnInit {
   }
 
   viewPatientDetailsPage(patient: Patient) {
-  this.patientsService.patient = patient;
-  this.router.navigate(['patients', 'patient-detail']);
+    this.patientsService.patient = patient;
+    this.router.navigate(['patients', 'patient-detail']);
+  }
+
+  viewPatientEditPage(patient: Patient) {
+    this.patientsService.patient = patient;
+    this.router.navigate(['patients', 'patient-edit']);
   }
 }
-
-//   .subscribe(
-    //   response => this.patients = response,
-    //   error => { console.log(error); this.isError = true;},
-    //   () => this.patients.sort(((a,b) => (a.lastName > b.lastName) ? 1 : ((b.lastName > a.lastName) ? -1 : 0)))
-    // );

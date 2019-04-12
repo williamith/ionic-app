@@ -45,7 +45,6 @@ export class PatientLabEditComponent implements OnInit {
     this.presentActionSheetUpdateLab();
   }
 
-  // Test if works
   deleteLab() {
     this.presentActionSheetDeleteLab();
   }
@@ -82,10 +81,9 @@ export class PatientLabEditComponent implements OnInit {
     await actionSheet.present();
   }
 
-  // SOFT DELETE METHOD
   async presentActionSheetDeleteLab() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Are you sure you want to edit this lab?',
+      header: 'Are you sure you want to delete this lab?',
       buttons: [{
         text: 'Delete Lab',
         role: 'destructive',
@@ -111,42 +109,13 @@ export class PatientLabEditComponent implements OnInit {
     await actionSheet.present();
   }
 
-  // HARD DELETE METHOD
-  // async presentActionSheetDeleteLab() {
-  //   const actionSheet = await this.actionSheetController.create({
-  //     header: 'Are you sure you want to delete this lab?',
-  //     buttons: [{
-  //       text: 'Delete Lab',
-  //       role: 'destructive',
-  //       icon: 'trash',
-  //       handler: () => {
-  //         this.labsService.deleteLab(this.oldLabValues.id)
-  //         .then(response => {
-  //           this.router.navigate(['patients', 'patient-detail']);
-  //           this.presentToastLabDeleted();
-  //         }).catch(error => {
-  //           console.log(error);
-  //         });
-  //       }
-  //     }, {
-  //       text: 'Cancel',
-  //       icon: 'close',
-  //       role: 'cancel',
-  //       handler: () => {
-  //         console.log('Cancel clicked');
-  //       }
-  //     }]
-  //   });
-  //   await actionSheet.present();
-  // }
-
   async presentToastLabEdited() {
     const toast = await this.toastController.create({
       message: `Lab edited successfully`,
       showCloseButton: true,
       position: 'bottom',
       closeButtonText: 'Close',
-      color: 'dark',
+      color: 'success',
       duration: 3000
     });
     toast.present();
@@ -158,7 +127,7 @@ export class PatientLabEditComponent implements OnInit {
       showCloseButton: true,
       position: 'bottom',
       closeButtonText: 'Close',
-      color: 'dark',
+      color: 'success',
       duration: 3000
     });
     toast.present();

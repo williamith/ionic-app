@@ -1,6 +1,8 @@
+import { Router } from '@angular/router';
 import { PatientsService } from '../shared/patients.service';
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/patients/shared/patient';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patient-create',
@@ -12,32 +14,33 @@ export class PatientCreateComponent implements OnInit {
     patientId: '',
     firstName: '',
     lastName: '',
-    isActive: false
+    isActive: true
   };
 
-  constructor(private patientsService: PatientsService) { }
+  constructor(private patientsService: PatientsService, private toastController: ToastController, private router: Router) { }
 
   ngOnInit() {
   }
 
   createPatient() {
-    // this.patientsService.createPatient(this.patient)
-    //   .then(memberRef => {
-    //     console.log(`Member with id of ${memberRef.id} is added`);
-    //     this.router.navigate(['app/members/directory']);
-    //     this.presentToastMemberCreated();
-    //   });
+    this.patientsService.createPatient(this.patient)
+      .then(response => {
+        this.presentToastPatientCreated();
+        this.router.navigate(['patients']);
+      }).catch(error => {
+        console.log(error);
+      });
   }
 
-  // async presentToastMemberCreated() {
-  //   const toast = await this.toastController.create({
-  //     message: `Member added successfully`,
-  //     showCloseButton: true,
-  //     position: 'bottom',
-  //     closeButtonText: 'Close',
-  //     color: 'dark',
-  //     duration: 3000
-  //   });
-  //   toast.present();
-  // }
+  async presentToastPatientCreated() {
+    const toast = await this.toastController.create({
+      message: `Patient created successfully`,
+      showCloseButton: true,
+      position: 'bottom',
+      closeButtonText: 'Close',
+      color: 'success',
+      duration: 3000
+    });
+    toast.present();
+  }
 }

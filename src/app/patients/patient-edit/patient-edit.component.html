@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Edit Patient Information</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="resetValues()">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="editPatient()">Done</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item color="medium">
+    <ion-text>
+      <ion-title>Enter new patient information here.</ion-title>
+    </ion-text>
+  </ion-item>
+  <ion-item color="light">
+    <ion-label>First Name: {{oldPatientValues.firstName}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="newPatientValues.firstName" type="text" clearInput="true"
+      placeholder="New First Name"></ion-input>
+  </ion-item>
+  <ion-item color="light">
+    <ion-label>Last Name: {{oldPatientValues.lastName}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="newPatientValues.lastName" type="text" clearInput="true"
+      placeholder="New Last Name"></ion-input>
+  </ion-item>
+  <ion-item color="light">
+    <ion-label>Patient ID: {{oldPatientValues.patientId}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" [(ngModel)]="newPatientValues.patientId" type="text" clearInput="true"
+      placeholder="New Patient ID"></ion-input>
+  </ion-item>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" color="danger" (click)="deletePatient()">
+    <ion-icon name="trash"></ion-icon>&nbsp;Delete
+  </ion-button>
+</ion-footer>
