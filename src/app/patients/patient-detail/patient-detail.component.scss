@@ -14,4 +14,14 @@ ion-label, ion-item, ion-col {
 ion-input{
     --placeholder-color: #989aa2;
     --placeholder-opacity: 1;
+    --padding-start: 0;
+}
+
+.pt-10 {
+    padding-top: 15px;
+}
+
+.pt-12-pb-10 {
+    padding-top: 12px;
+    padding-bottom: 10px;
 }
