@@ -83,44 +83,15 @@ export class PatientLabEditComponent implements OnInit {
   }
 
   // SOFT DELETE METHOD
-  // async presentActionSheetDeleteLab() {
-  //   const actionSheet = await this.actionSheetController.create({
-  //     header: 'Are you sure you want to edit this lab?',
-  //     buttons: [{
-  //       text: 'Delete Lab',
-  //       role: 'destructive',
-  //       icon: 'trash',
-  //       handler: () => {
-  //         this.labsService.updateLab(this.deleteLabValues)
-  //         .then(response => {
-  //           this.router.navigate(['patients', 'patient-detail']);
-  //           this.presentToastLabDeleted();
-  //         }).catch(error => {
-  //           console.log(error);
-  //         });
-  //       }
-  //     }, {
-  //       text: 'Cancel',
-  //       icon: 'close',
-  //       role: 'cancel',
-  //       handler: () => {
-  //         console.log('Cancel clicked');
-  //       }
-  //     }]
-  //   });
-  //   await actionSheet.present();
-  // }
-
-  // HARD DELETE METHOD
   async presentActionSheetDeleteLab() {
     const actionSheet = await this.actionSheetController.create({
-      header: 'Are you sure you want to delete this lab?',
+      header: 'Are you sure you want to edit this lab?',
       buttons: [{
         text: 'Delete Lab',
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.labsService.deleteLab(this.oldLabValues.id)
+          this.labsService.updateLab(this.deleteLabValues)
           .then(response => {
             this.router.navigate(['patients', 'patient-detail']);
             this.presentToastLabDeleted();
@@ -139,6 +110,35 @@ export class PatientLabEditComponent implements OnInit {
     });
     await actionSheet.present();
   }
+
+  // HARD DELETE METHOD
+  // async presentActionSheetDeleteLab() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     header: 'Are you sure you want to delete this lab?',
+  //     buttons: [{
+  //       text: 'Delete Lab',
+  //       role: 'destructive',
+  //       icon: 'trash',
+  //       handler: () => {
+  //         this.labsService.deleteLab(this.oldLabValues.id)
+  //         .then(response => {
+  //           this.router.navigate(['patients', 'patient-detail']);
+  //           this.presentToastLabDeleted();
+  //         }).catch(error => {
+  //           console.log(error);
+  //         });
+  //       }
+  //     }, {
+  //       text: 'Cancel',
+  //       icon: 'close',
+  //       role: 'cancel',
+  //       handler: () => {
+  //         console.log('Cancel clicked');
+  //       }
+  //     }]
+  //   });
+  //   await actionSheet.present();
+  // }
 
   async presentToastLabEdited() {
     const toast = await this.toastController.create({
