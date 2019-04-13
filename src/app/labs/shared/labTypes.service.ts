@@ -12,7 +12,6 @@ export class LabTypesService {
 
   constructor(private http: HttpClient) { }
 
-  // TEST
   createLabType(labType: LabType): Promise<LabType> {
     return this.http.post<LabType>(this.url, labType).toPromise();
   }
@@ -22,10 +21,10 @@ export class LabTypesService {
   }
 
   updateLabType(labType: LabType): Promise<LabType> {
-    return this.http.put<LabType>(this.url, labType).toPromise();
+    return this.http.put<LabType>(`${this.url}/${labType.id}`, labType).toPromise();
   }
 
-  deleteLabType(labType: LabType) {
-    // return this.http.put<LabType>(this.url, labType);
+  deleteLabType(id: string): Promise<LabType> {
+    return this.http.delete<LabType>(`${this.url}/${id}`).toPromise();
   }
 }

@@ -1,5 +1,5 @@
 export interface LabType {
-    id: string;
+    id?: string;
     labType: string;
     isMandatory: boolean;
 }

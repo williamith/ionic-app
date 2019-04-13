@@ -6,7 +6,13 @@
       </ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="crateLabType()">Done</ion-button>
+      <ion-button (click)="createLabType()">Done</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
+<ion-content>
+  <ion-item color="light">New Lab Type</ion-item>
+  <ion-input autocapitalize="true" [(ngModel)]="labType.labType" type="text" required="true" clearInput="true"
+    placeholder="Enter New Lab Type" color="primary"></ion-input>
+</ion-content>

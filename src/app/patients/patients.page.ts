@@ -17,9 +17,7 @@ export class PatientsPage implements OnInit {
     this.patientsService.readPatients().subscribe(
       response => { this.patients = response; },
       error => console.log(error),
-      () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Filters patients array by isActive value.
-        this.patients = this.patients.filter(function (patient) { return patient.isActive === true });
-      }
+      () => { this.patients = this.patients.filter(function (patient) { return patient.isActive === true }); }
     );
   }
 
