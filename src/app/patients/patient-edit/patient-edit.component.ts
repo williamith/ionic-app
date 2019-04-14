@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from '../shared/patient';
-import { ActionSheetController, ToastController } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 import { PatientsService } from '../shared/patients.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-edit',
@@ -26,7 +25,7 @@ export class PatientEditComponent implements OnInit {
     isActive: false
   };
 
-  constructor(private patientsService: PatientsService, private actionSheetController: ActionSheetController, private toastController: ToastController, private router: Router) { }
+  constructor(private patientsService: PatientsService, private actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
     this.oldPatientValues = this.patientsService.patient;
@@ -53,12 +52,29 @@ export class PatientEditComponent implements OnInit {
         icon: 'trash',
         handler: () => {
           this.patientsService.updatePatient(this.newPatientValues)
-            .then(response => {
-              this.router.navigate(['dashboard']);
-              this.presentToastPatientEdited();
-            }).catch(error => {
-              console.log(error);
-            });
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
+  // HARD DELETE METHOD
+  async presentActionSheetDeletePatient() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Are you sure you want to delete this patient?',
+      buttons: [{
+        text: 'Delete Patient',
+        role: 'destructive',
+        icon: 'trash',
+        handler: () => {
+          this.patientsService.deletePatient(this.oldPatientValues.id);
         }
       }, {
         text: 'Cancel',
@@ -100,57 +116,4 @@ export class PatientEditComponent implements OnInit {
   //   });
   //   await actionSheet.present();
   // }
-
-  // HARD DELETE METHOD
-  async presentActionSheetDeletePatient() {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Are you sure you want to delete this patient?',
-      buttons: [{
-        text: 'Delete Patient',
-        role: 'destructive',
-        icon: 'trash',
-        handler: () => {
-          this.patientsService.deletePatient(this.oldPatientValues.id)
-          .then(response => {
-            this.router.navigate(['dashboard']);
-            this.presentToastPatientDeleted();
-          }).catch(error => {
-            console.log(error);
-          });
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
-    });
-    await actionSheet.present();
-  }
-
-  async presentToastPatientEdited() {
-    const toast = await this.toastController.create({
-      message: `Patient edited successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
-  }
-
-  async presentToastPatientDeleted() {
-    const toast = await this.toastController.create({
-      message: `Patient deleted successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
-  }
 }

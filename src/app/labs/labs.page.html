@@ -18,7 +18,7 @@
     <ion-title>Create new lab types and select which labs you use.</ion-title>
   </ion-item>
   <ion-list>
-    <ion-item *ngFor="let labType of labTypes">
+    <ion-item *ngFor="let labType of labTypes | async">
       <ion-grid>
         <ion-row>
           <ion-col size="10">

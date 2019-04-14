@@ -5,7 +5,6 @@ import { PatientsService } from '../shared/patients.service';
 import { LabTypesService } from '../../labs/shared/labTypes.service';
 import { LabsService } from '../shared/labs.service';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patient-detail',
@@ -24,7 +23,7 @@ export class PatientDetailComponent implements OnInit {
     '', '', '', '', '', '', '', '', '', '',
     '', '', '', '', '', '', '', '', '', '',
     '', '', '', '', '', '', '', '', '', '',
-    '', '', '', '', '', '', '', '', '', '',
+    '', '', '', '', '', '', '', '', '', ''
   ];
   patient: Patient; // Current patient data for HTML string interpolation
   lab: Lab = { // Lab values to be submitted to database
@@ -35,7 +34,7 @@ export class PatientDetailComponent implements OnInit {
     isHidden: false
   }
 
-  constructor(private patientsService: PatientsService, private labTypesService: LabTypesService, private labsService: LabsService, private router: Router, private toastController: ToastController) { }
+  constructor(private patientsService: PatientsService, private labTypesService: LabTypesService, private labsService: LabsService, private router: Router) { }
 
   ngOnInit() {
     this.patient = this.patientsService.patient; // Sets current patient
@@ -58,10 +57,7 @@ export class PatientDetailComponent implements OnInit {
     this.labsService.createLab(this.lab)
       .then(response => {
         this.values[index] = ''; // Clear form data
-        this.presentToastLabCreated();
-      }).catch(error => {
-        console.log(error);
-      });
+      })
   }
 
   viewLabHistoryPage(labType: any) { // Get lab type and go to Lab History Page
@@ -74,58 +70,4 @@ export class PatientDetailComponent implements OnInit {
     let labType = result[1];
     return labType.toString();
   }
-
-  async presentToastLabCreated() {
-    const toast = await this.toastController.create({
-      message: `Lab recorded successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
-  }
 }
-
-// Needs testing
-  // getRecentLab() {
-  //   this.labsService.readLabs(this.patientsService.patient.patientId).subscribe(
-  //     response => {
-  //       this.recentLab = response.filter(item => {
-  //         return item.labType.includes(this.labsService.labType);
-  //       });
-
-  //       this.recentLab = this.recentLab[0];
-  //       console.log(this.recentLab);
-  //     },
-  //     error => console.log(error),
-  //     () => this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)))
-  //   );
-  // }
-
-// for (let i = 0; i < this.labTypes.length; i++) {
-  //   this.labInputValues.push(0);
-  //   console.log(`labInputArray.length = ${this.labInputValues.length}`)
-  // }
-
-
-// createLabTypesHasLengthArray() {
-  //   for (let index = 0; index < this.labTypes.length; index++) {
-  //     console.log('Hello');
-  //   }
-
-  //   this.labTypes.forEach(element => {
-
-  //   });
-  // }
-
-// this.labsService.readLabs().subscribe(
-  //   response => {
-  //     this.labs = response.filter(item => {
-  //       return item.labType.includes(this.labsService.labType);
-  //     });
-  //   },
-  //   error => console.log(error),
-  //   () => this.labs.sort(function (obj1, obj2) { return obj1.date - obj2.date; })
-  // );

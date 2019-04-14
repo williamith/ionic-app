@@ -11,13 +11,6 @@ import { Router } from '@angular/router';
 })
 export class PatientLabEditComponent implements OnInit {
   oldLabValues: Lab;
-  // {
-  //   patientId: this.labsService.lab.patientId,
-  //   labType: this.labsService.lab.labType,
-  //   labValue: this.labsService.lab.labValue,
-  //   date: this.labsService.lab.date,
-  //   isHidden: this.labsService.lab.isHidden,
-  // };
   newLabValues: Lab = {
     id: this.labsService.lab.id,
     patientId: this.labsService.lab.patientId,
@@ -61,13 +54,7 @@ export class PatientLabEditComponent implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.labsService.updateLab(this.newLabValues)
-          .then(response => {
-            this.router.navigate(['patients', 'patient-detail']);
-            this.presentToastLabEdited();
-          }).catch(error => {
-            console.log(error);
-          });
+          this.labsService.updateLab(this.newLabValues);
         }
       }, {
         text: 'Cancel',
@@ -89,13 +76,7 @@ export class PatientLabEditComponent implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.labsService.updateLab(this.deleteLabValues)
-          .then(response => {
-            this.router.navigate(['patients', 'patient-detail']);
-            this.presentToastLabDeleted();
-          }).catch(error => {
-            console.log(error);
-          });
+          this.labsService.updateLab(this.deleteLabValues);
         }
       }, {
         text: 'Cancel',
@@ -107,29 +88,5 @@ export class PatientLabEditComponent implements OnInit {
       }]
     });
     await actionSheet.present();
-  }
-
-  async presentToastLabEdited() {
-    const toast = await this.toastController.create({
-      message: `Lab edited successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
-  }
-
-  async presentToastLabDeleted() {
-    const toast = await this.toastController.create({
-      message: `Lab deleted successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
   }
 }

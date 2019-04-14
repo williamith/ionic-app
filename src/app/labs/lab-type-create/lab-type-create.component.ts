@@ -1,7 +1,7 @@
 import { LabTypesService } from './../shared/labTypes.service';
 import { Component, OnInit } from '@angular/core';
 import { LabType } from '../shared/labType';
-import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lab-type-create',
@@ -14,29 +14,12 @@ export class LabTypeCreateComponent implements OnInit {
     isMandatory: true
   };
 
-  constructor(private labTypesService: LabTypesService, private toastController: ToastController) { }
+  constructor(private labTypesService: LabTypesService, private router: Router) { }
 
   ngOnInit() { }
 
   createLabType() {
     this.labTypesService.createLabType(this.labType)
-      .then(response => {
-        this.presentToastLabTypeCreated();
-        this.ngOnInit();
-      }).catch(error => {
-        console.log(error);
-      });
-  }
-
-  async presentToastLabTypeCreated() {
-    const toast = await this.toastController.create({
-      message: `Lab type created successfully`,
-      showCloseButton: true,
-      position: 'bottom',
-      closeButtonText: 'Close',
-      color: 'success',
-      duration: 3000
-    });
-    toast.present();
+      .then(() => this.router.navigate(['labs']))
   }
 }
