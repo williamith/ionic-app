@@ -65,7 +65,6 @@ export class PatientEditComponent implements OnInit {
     await actionSheet.present();
   }
 
-  // HARD DELETE METHOD
   async presentActionSheetDeletePatient() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Are you sure you want to delete this patient?',
@@ -74,7 +73,7 @@ export class PatientEditComponent implements OnInit {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.patientsService.deletePatient(this.oldPatientValues.id);
+          this.patientsService.updatePatient(this.deletePatientValues);
         }
       }, {
         text: 'Cancel',
@@ -87,33 +86,4 @@ export class PatientEditComponent implements OnInit {
     });
     await actionSheet.present();
   }
-
-  // SOFT DELETE METHOD
-  // async presentActionSheetDeletePatient() {
-  //   const actionSheet = await this.actionSheetController.create({
-  //     header: 'Are you sure you want to delete this patient?',
-  //     buttons: [{
-  //       text: 'Delete Patient',
-  //       role: 'destructive',
-  //       icon: 'trash',
-  //       handler: () => {
-  //         this.patientsService.updatePatient(this.deletePatientValues)
-  //           .then(response => {
-  //             this.router.navigate(['dashboard']);
-  //             this.presentToastPatientDeleted();
-  //           }).catch(error => {
-  //             console.log(error);
-  //           });
-  //       }
-  //     }, {
-  //       text: 'Cancel',
-  //       icon: 'close',
-  //       role: 'cancel',
-  //       handler: () => {
-  //         console.log('Cancel clicked');
-  //       }
-  //     }]
-  //   });
-  //   await actionSheet.present();
-  // }
 }

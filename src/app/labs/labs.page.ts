@@ -41,10 +41,10 @@ export class LabsPage implements OnInit {
     }
   }
 
-  deleteLabType(labType: LabType) {
-    this.labTypesService.deleteLabType(labType.id)
-      .then(() => {
-        this.ngOnInit();
-      });
-  }
+  // deleteLabType(labType: LabType) {
+  //   this.labTypesService.deleteLabType(labType.id)
+  //     .then(() => {
+  //       this.ngOnInit();
+  //     });
+  // }
 }
