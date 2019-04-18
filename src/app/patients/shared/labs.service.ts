@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LabsService {
-  url: string = 'https://localhost:44394/api/labscollection';
+  url: string = 'https://localhost:44311/api/labscollection';
   lab: Lab;
   labType: string;
 

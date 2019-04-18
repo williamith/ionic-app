@@ -8,7 +8,7 @@ import { ToastController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class LabTypesService {
-  url: string = 'https://localhost:44394/api/labstype';
+  url: string = 'https://localhost:44311/api/labstype';
   labType: LabType;
 
   constructor(private http: HttpClient, private toastController: ToastController) { }
