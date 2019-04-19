@@ -53,7 +53,6 @@ export class PatientDetailComponent implements OnInit {
         };
 
         this.labTypes = this.labTypes.sort(((a, b) => (a.isMandatory < b.isMandatory) ? 1 : ((b.isMandatory < a.isMandatory) ? -1 : 0)));
-        this.recentValues();
         this.labsService.readLabs().subscribe(
           response => this.labs = response,
           error => console.log(error),
@@ -68,22 +67,15 @@ export class PatientDetailComponent implements OnInit {
               });
 
               let temp: Lab = array[0];
-              console.log(temp);
 
               if(temp != undefined || temp != null) {
                 this.labRecentValues[x] = temp;
               }
             }
-
-            console.log(this.labRecentValues);
           }
         );
       }
     );
-  }
-
-  recentValues() {
-    console.log(this.labTypes[0]);
   }
 
   createLab(labType: Lab, index: number) { // Create lab
@@ -95,6 +87,7 @@ export class PatientDetailComponent implements OnInit {
     this.labsService.createLab(this.lab)
       .then(response => {
         this.values[index] = ''; // Clear form data
+        this.ngOnInit();
       })
   }
 

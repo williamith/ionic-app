@@ -39,19 +39,17 @@
             </ion-label>
           </ion-col>
           <ion-col size="12" size-md>
-            <ion-button color="light" (click)="viewLabHistoryPage(labType)">
+            <ion-button *ngIf="labRecentValues[i] != null" color="tertiary" (click)="viewLabHistoryPage(labType)">
               <ion-icon name="filing"></ion-icon>&nbsp;View History
             </ion-button>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <div>
-              <ion-note *ngIf="labRecentValues[i] != null">
-                Latest value of <ion-note color="danger">{{labRecentValues[i].patientId}}</ion-note> on
-                {{labRecentValues[i].labDate | date: 'MM/dd/yyyy'}}
-              </ion-note>
-            </div>
+            <ion-note *ngIf="labRecentValues[i] != null">
+              Latest value of <ion-note color="danger">{{labRecentValues[i].labValue}}</ion-note> on
+              {{labRecentValues[i].date | date: 'MM/dd/yyyy'}}
+            </ion-note>
           </ion-col>
         </ion-row>
       </ion-grid>
