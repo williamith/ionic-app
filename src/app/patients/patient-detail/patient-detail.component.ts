@@ -34,7 +34,7 @@ export class PatientDetailComponent implements OnInit {
     date: '',
     isHidden: false
   }
-  labRecentValues = [];
+  labRecentValues = [null];
   labs = [];
 
   constructor(private patientsService: PatientsService, private labTypesService: LabTypesService, private labsService: LabsService, private router: Router) { }
@@ -45,28 +45,36 @@ export class PatientDetailComponent implements OnInit {
     this.labTypesService.readLabTypes().subscribe( // Sets lab types and handle any response or error
       response => {
         this.labTypes = response;
-        for (var x = 0; x < this.labTypes.length; x++) {
-          this.labRecentValues[x] = 0;
-        }
       },
       error => console.log(error),
       () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Sorts labs array by isMandatory value.
+        for (let x = 0; x < this.labTypes.length; x++) {
+          this.labRecentValues.push(null);
+        };
+
         this.labTypes = this.labTypes.sort(((a, b) => (a.isMandatory < b.isMandatory) ? 1 : ((b.isMandatory < a.isMandatory) ? -1 : 0)));
         this.recentValues();
         this.labsService.readLabs().subscribe(
           response => this.labs = response,
           error => console.log(error),
           () => { // DO NOT SHORTEN OR COMBINE THE FOLLOWING TWO STATEMENTS, IT WILL NOT WORK!!! Sorts and filters labs array by isHidden value.
-            this.labs = this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0))); 
-            this.labs = this.labs.filter(function(lab) { return lab.isHidden === false });
-            
+            this.labs = this.labs.sort(((a, b) => (a.date < b.date) ? 1 : ((b.date < a.date) ? -1 : 0)));
+            this.labs = this.labs.filter(function (lab) { return lab.isHidden === false });
+
             for (let x = 0; x < this.labTypes.length; x++) {
-              var type: LabType = this.labTypes[x];
-              var array = this.labs.filter(function(lab) {
+              let type: LabType = this.labTypes[x];
+              let array = this.labs.filter(function (lab) {
                 return lab.labType === type.labType;
               });
-              this.labRecentValues[x] = array;
+
+              let temp: Lab = array[0];
+              console.log(temp);
+
+              if(temp != undefined || temp != null) {
+                this.labRecentValues[x] = temp;
+              }
             }
+
             console.log(this.labRecentValues);
           }
         );

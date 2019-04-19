@@ -46,27 +46,15 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-note color>Latest value of <ion-note color="danger">xxxxx</ion-note> on 'MM/dd/yyyy'
-            </ion-note>
+            <div>
+              <ion-note *ngIf="labRecentValues[i] != null">
+                Latest value of <ion-note color="danger">{{labRecentValues[i].patientId}}</ion-note> on
+                {{labRecentValues[i].labDate | date: 'MM/dd/yyyy'}}
+              </ion-note>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
   </ion-list>
 </ion-content>
-
-<!-- <ion-list>
-    <ion-item *ngFor="let lab of labs">
-      <ion-grid>
-        <ion-row>
-          <ion-label>{{lab.labType}}</ion-label>
-        </ion-row>
-        <ion-row>
-          <ion-note color="medium">{{lab.labValue}}</ion-note>
-        </ion-row>
-        <ion-row>
-          <ion-note>{{lab.date | date: 'MM/dd/yyyy'}} {{lab.date | date: 'hh:mmaa'}}</ion-note>
-        </ion-row>
-      </ion-grid>
-    </ion-item>
-  </ion-list> -->
