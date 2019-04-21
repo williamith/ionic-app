@@ -1,27 +1,36 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './login/shared/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
+    path: 'login',
+    loadChildren: './login/login.module#LoginPageModule'
+  },
+  {
     path: 'dashboard',
-    loadChildren: './dashboard/dashboard.module#DashboardPageModule'
+    loadChildren: './dashboard/dashboard.module#DashboardPageModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'patients',
-    loadChildren: './patients/patients.module#PatientsPageModule'
+    loadChildren: './patients/patients.module#PatientsPageModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'labs',
-    loadChildren: './labs/labs.module#LabsPageModule'
+    loadChildren: './labs/labs.module#LabsPageModule',
+    canLoad: [AuthGuard]
   },
   {
     path: 'pharmacists',
-    loadChildren: './pharmacists/pharmacists.module#PharmacistsPageModule'
+    loadChildren: './pharmacists/pharmacists.module#PharmacistsPageModule',
+    canLoad: [AuthGuard]
   }
 ];
 

@@ -1,24 +1,7 @@
 <ion-app>
-  <ion-split-pane>
+  <ion-split-pane *ngIf="isLoggedIn == true">
     <ion-menu menuId="sideNav">
-      <!-- <ion-toolbar>
-        <ion-title>
-          <h1>
-            <ion-icon color="danger" name="heart" class="pr-1"></ion-icon>Strand
-          </h1>
-        </ion-title>
-      </ion-toolbar> -->
       <ion-content color="dark">
-        <!-- <ion-list lines="none">
-          <ion-menu-toggle auto-hide="false" *ngFor="let page of pages">
-            <ion-item color="dark" [routerDirection]="'root'" [routerLink]="[page.url]">
-              <ion-icon slot="start" [name]="page.icon"></ion-icon>
-              <ion-label>
-                {{page.title}}
-              </ion-label>
-            </ion-item>
-          </ion-menu-toggle>
-        </ion-list> -->
         <div class="centervert">
           <ion-button expand="full" fill="clear" [color]="isDashboard ? 'light' : 'medium'"
             (click)="togglePage('dashboard')">
@@ -38,11 +21,15 @@
         </div>
       </ion-content>
       <ion-footer>
-        <ion-button expand="full" fill="clear" color="medium">
+        <ion-button expand="full" fill="clear" color="medium" (click)="logout()" href="../">
           <ion-icon name="log-out"></ion-icon>
         </ion-button>
       </ion-footer>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
+
+  <ion-content *ngIf="isLoggedIn == false">
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-content>
 </ion-app>

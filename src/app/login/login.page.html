@@ -1,0 +1,15 @@
+<ion-content padding>
+  <div class="spacer"></div>
+  <img src="../../assets/image/strand.jpg" />
+  <div class="spacer"></div>
+  <form>
+    <ion-item>
+      <ion-input type="email" [(ngModel)]="user.email" name="email" placeholder="Email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="password" [(ngModel)]="user.password" name="password" placeholder="Password"></ion-input>
+    </ion-item>
+  </form>
+  <div class="spacer"></div>
+  <ion-button color="light" (click)="login()" expand="block">Log in</ion-button>
+</ion-content>
