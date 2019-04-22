@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-row>
   <ion-row>
-    <ion-searchbar animated="true" mode="ios" color="light" #search (ionChange)="search(search.value)"></ion-searchbar>
+    <ion-searchbar placeholder="Last Name" animated="true" mode="ios" color="light" (ionInput)="filterList($event)" showCancelButton></ion-searchbar>
   </ion-row>
 </ion-header>
 
