@@ -4,3 +4,30 @@ img {
     margin-left: auto;
     margin-right: auto; 
 }
+
+ion-button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-input {
+    width: 432px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+ion-content {
+    --background: #000 url('../../assets/image/apothecary.jpg') no-repeat center center / cover;
+}
+
+.large {
+    font-size: 5em;
+    font-weight: 100;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+ion-item {
+    --background: rgba(34, 34, 34, 0.5);
+}

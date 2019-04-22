@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './login/shared/auth.guard';
+import { RoleGuard } from './login/shared/role.guard';
 
 const routes: Routes = [
   {
@@ -25,12 +26,12 @@ const routes: Routes = [
   {
     path: 'labs',
     loadChildren: './labs/labs.module#LabsPageModule',
-    canLoad: [AuthGuard]
+    canLoad: [RoleGuard]
   },
   {
     path: 'pharmacists',
     loadChildren: './pharmacists/pharmacists.module#PharmacistsPageModule',
-    canLoad: [AuthGuard]
+    canLoad: [RoleGuard]
   }
 ];
 

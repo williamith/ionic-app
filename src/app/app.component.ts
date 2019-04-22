@@ -16,7 +16,6 @@ export class AppComponent {
   isPatients = false;
   isLabs = false;
   isPharmacists = false;
-  isLoggedIn = false;
 
   public pages = [
     {
@@ -46,7 +45,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private router: Router,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     this.initializeApp();
   }
@@ -90,6 +89,5 @@ export class AppComponent {
 
   logout() {
     this.authService.logout();
-    this.isLoggedIn = false;
   }
 }

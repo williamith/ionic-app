@@ -1,5 +1,5 @@
 <ion-app>
-  <ion-split-pane *ngIf="isLoggedIn == true">
+  <ion-split-pane *ngIf="this.authService.getUserIsAuthenticated() == true">
     <ion-menu menuId="sideNav">
       <ion-content color="dark">
         <div class="centervert">
@@ -11,10 +11,10 @@
             (click)="togglePage('patients')">
             <ion-icon name="people"></ion-icon>
           </ion-button>
-          <ion-button expand="full" fill="clear" [color]="isLabs ? 'light' : 'medium'" (click)="togglePage('labs')">
+          <ion-button *ngIf="this.authService.getUserIsAuthenticated() == true && this.authService.getUserIsAdmin() == true" expand="full" fill="clear" [color]="isLabs ? 'light' : 'medium'" (click)="togglePage('labs')">
             <ion-icon name="flask"></ion-icon>
           </ion-button>
-          <ion-button expand="full" fill="clear" [color]="isPharmacists ? 'light' : 'medium'"
+          <ion-button *ngIf="this.authService.getUserIsAuthenticated() == true && this.authService.getUserIsAdmin() == true" expand="full" fill="clear" [color]="isPharmacists ? 'light' : 'medium'"
             (click)="togglePage('pharmacists')">
             <ion-icon name="medkit"></ion-icon>
           </ion-button>
@@ -29,7 +29,7 @@
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 
-  <ion-content *ngIf="isLoggedIn == false">
+  <ion-content *ngIf="this.authService.getUserIsAuthenticated() == false">
     <ion-router-outlet main></ion-router-outlet>
   </ion-content>
 </ion-app>

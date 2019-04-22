@@ -40,15 +40,15 @@ export class PatientsService {
       });;
   }
 
-  deletePatient(id: string) {
-    return this.http.delete<Patient>(`${this.url}/${id}`).toPromise()
+  deletePatient(patient: Patient) {
+    return this.http.put<Patient>(`${this.url}/${patient.id}`, patient).toPromise()
       .then(() => {
         this.router.navigate(['dashboard']);
         this.presentToast('deleted');
       })
       .catch(error => {
         console.log(error);
-      });
+      });;
   }
 
   async presentToast(action: string) {

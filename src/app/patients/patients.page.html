@@ -14,7 +14,7 @@
     </ion-toolbar>
   </ion-row>
   <ion-row>
-    <ion-searchbar animated="true" mode="ios" color="light"></ion-searchbar>
+    <ion-searchbar animated="true" mode="ios" color="light" #search (ionChange)="search(search.value)"></ion-searchbar>
   </ion-row>
 </ion-header>
 

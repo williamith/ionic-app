@@ -8,7 +8,8 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private userIsAuthenticated: boolean;
+  private userIsAuthenticated = false;
+  private userIsAdmin = false;
 
   constructor(private router: Router, private toastController: ToastController) { }
 
@@ -16,10 +17,19 @@ export class AuthService {
     return this.userIsAuthenticated;
   }
 
+  getUserIsAdmin() {
+    return this.userIsAdmin;
+  }
+
   login(user: User) {
     if (user.email === 'user' && user.password === 'user') {
       this.userIsAuthenticated = true;
       console.log('User is logged in!');
+      this.router.navigate(['dashboard']);
+    } else if (user.email === 'admin' && user.password === 'admin') {
+      this.userIsAuthenticated = true;
+      this.userIsAdmin = true;
+      console.log('Admin is logged in!');
       this.router.navigate(['dashboard']);
     }
     else {
